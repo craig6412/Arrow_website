@@ -1,64 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>Arrow – Neon Ring Runner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Arrow</title>
-  <meta name="description" content="Arrow is a fast, free Android game. Glide through neon rings, unlock skins, and chase high scores.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Ctext y='62%25' x='50%25' text-anchor='middle' font-size='180'%3E%E2%9E%9C%3C/text%3E%3C/svg%3E">
-  <meta property="og:title" content="Arrow – Neon Ring Runner">
-  <meta property="og:description" content="Free Android game with tap & tilt controls.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Arrow+Game+Cover">
-  <meta name="theme-color" content="#00E5FF">
-
+  <meta name="description" content="Guide a neon arrow through rings, stack combos, and chase high scores. Free to play, ad-supported." />
+  <link rel="icon" href="Arrow_app_icon.png" />
   <style>
     :root{
-      --bg:#0b0f14; --panel:#0f1620; --ink:#e8f0ff; --muted:#9fb3c8;
-      --brand:#00e5ff; --brand2:#7b61ff; --ok:#64ffda; --warn:#ffc857;
-      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
-      --max:1100px;
+      --bg:#0b0f14; --card:#101826; --text:#e6f1ff; --muted:#9db0c7;
+      --accent:#29ffd5; --accent2:#5aa8ff; --border:#1b2740; --max:1100px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background:linear-gradient(180deg,#0b0f14,#0b0f14 40%,#0c121a 100%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    a{color:var(--brand);text-decoration:none}
+    html,body{margin:0;background:linear-gradient(180deg,#0b0f14,#0a101a);color:var(--text);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--accent2);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:var(--max);margin:0 auto;padding:20px}
-    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
-    .logo{width:40px;height:40px;border-radius:10px;background: radial-gradient(60% 60% at 50% 40%, #1ffeff, #006dff); box-shadow:0 0 18px rgba(0,229,255,.6) inset, 0 0 18px rgba(0,229,255,.25)}
-    .nav a.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#001018;font-weight:700}
-    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;padding:28px 0}
-    .card{background:linear-gradient(180deg,#0f1620,#0d141c);border:1px solid #192333;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .p24{padding:24px}
-    h1{font-size:clamp(28px,4vw,44px);margin:0 0 10px;line-height:1.05}
-    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#0c1922;border:1px solid #123042;color:var(--ok);font-size:12px;font-weight:700;letter-spacing:.3px}
-    .lede{color:var(--muted);font-size:clamp(14px,2.5vw,18px)}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
-    .badge{height:48px;border-radius:10px;overflow:hidden;border:1px solid #1b2735;background:#081018}
-    .mock{aspect-ratio:16/10;border-radius:var(--radius);border:1px solid #1b2735;background:
-      radial-gradient(80% 80% at 50% 50%, rgba(0,229,255,.12), rgba(0,0,0,0) 60%),
-      url('https://placehold.co/1200x750/png?text=Gameplay+Screenshot') center/cover no-repeat;}
+    header{position:sticky;top:0;z-index:30;background:rgba(11,15,20,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    .nav{max-width:var(--max);margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand img{width:28px;height:28px;border-radius:6px;border:1px solid var(--border)}
+    .spacer{flex:1}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#00131a;font-weight:800;box-shadow:0 6px 22px rgba(90,168,255,.28)}
+    main{max-width:var(--max);margin:0 auto;padding:28px 16px}
+    section{padding:56px 0;border-bottom:1px solid var(--border)}
+    h1,h2{margin:0 0 10px}
+    h1{font-size:40px;letter-spacing:.4px}
+    h2{font-size:28px}
+    p{color:var(--muted);line-height:1.65;margin:8px 0 0}
+    .card{background:radial-gradient(160% 140% at 50% 0%,#0f1726 0%, #0d1421 45%, #0a101a 100%);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
     .grid{display:grid;gap:16px}
-    .features{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:16px}
-    .feat{padding:18px;border-radius:14px;border:1px solid #1b2735;background:#0b121a}
-    h3{margin:.4rem 0}
-    .gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .shot{aspect-ratio:16/9;border-radius:12px;border:1px solid #1b2735;background:#0b1218 url('https://placehold.co/800x450/png?text=Screenshot') center/cover no-repeat}
-    .two{grid-template-columns:1fr 1fr}
-    .policy{white-space:pre-wrap;font-size:14px;line-height:1.5;color:#c9d7e6}
-    .faq dt{font-weight:800;margin-top:10px}
-    .faq dd{margin:0 0 10px;color:var(--muted)}
-    footer{margin:40px 0;color:#8ea3b7;font-size:13px}
-    .kpis{display:flex;gap:12px;flex-wrap:wrap}
-    .pill{padding:10px 12px;border-radius:999px;border:1px solid #1b2735;background:#0c1219}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.features,.gallery,.two{grid-template-columns:1fr}}
+    .g2{grid-template-columns:repeat(2,1fr)}
+    .g3{grid-template-columns:repeat(3,1fr)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:center}
+    .hero-banner{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border)}
+    .hero-banner img{display:block;width:100%;height:auto}
+    .pill{display:inline-block;margin-right:8px;margin-top:8px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:#b9c8de;font-size:12px}
+    img.resp{width:100%;height:auto;border-radius:14px;border:1px solid var(--border)}
+    ul{margin:10px 0 0 18px}
+    li{margin:6px 0;color:var(--muted)}
+    footer{padding:38px 16px;text-align:center;color:#8ba0b8}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      h1{font-size:32px}
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <header>
     <nav class="nav">
-      <div class="brand"><div class="logo" aria-hidden="true"></div> Arrow</div>
-      <div class="kpis">
-        <span class="pill">Free • Ad-supported</span>
-        <a class="btn" href="#download">Download</a>
+      <div class="brand">
+        <img src="Arrow_app_icon.png" alt="Arrow app icon" />
+        <span>Arrow</span>
+      </div>
+      <div class="spacer"></div>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#screens">Screens</a>
+      <a href="#press">Press Kit</a>
+      <a href="#privacy">Privacy</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.arrow.arrow" target="_blank" rel="noopener">Download on Google Play</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div>
+        <h1>Arrow – Neon Ring Runner</h1>
+        <p>Guide a neon arrow through rings, stack bonus chains, and chase global high scores. Simple to learn, tough to master, and tuned for smooth 60 FPS gameplay. Free to play, ad-supported.</p>
+        <p>
+          <span class="pill">Free • Ad-supported</span>
+          <span class="pill">Multiple control styles</span>
+          <span class="pill">Offline-friendly</span>
+        </p>
+        <p style="margin-top:14px;">
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.arrow.arrow" target="_blank" rel="noopener">Get it on Google Play</a>
+        </p>
+      </div>
+      <div class="hero-banner">
+        <!-- Uses your banner exactly as named -->
+        <img src="Arrow banner.png" alt="Arrow game banner" />
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About the Game</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Core Loop</h3>
+          <p>Fly through rings to score. Keep your streak alive to build massive combos. Miss a ring or collide with obstacles and it’s game over—one more try!</p>
+          <ul>
+            <li>Green rings = standard points</li>
+            <li>Blue rings = combo/bonus chains</li>
+            <li>Bonus rings = big score boosts</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Control Styles</h3>
+          <ul>
+            <li><strong>Tap/Hold:</strong> Tap to rise, release to fall (classic).</li>
+            <li><strong>Thumb-Drag:</strong> Press anywhere; slide up/down for smooth control.</li>
+            <li><strong>Tilt (Landscape):</strong> Steer like a wheel while gravity does the rest.</li>
+          </ul>
+          <p><em>Dev Option:</em> Adjust the speed-drop multiplier to simulate real-world drag and get the exact “feel” you like.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENS / ART -->
+    <section id="screens">
+      <h2>Screens & Art</h2>
+      <div class="grid g3">
+        <!-- If you add more screenshots later, just drop them in and duplicate an <img> tag -->
+        <img class="resp" src="arrow_pink.png" alt="Arrow pink skin artwork" />
+        <img class="resp" src="Arrow_app_icon.png" alt="Arrow app icon large" />
+        <img class="resp" src="Arrow banner.png" alt="Arrow banner wide" />
+      </div>
+    </section>
+
+    <!-- PRESS KIT -->
+    <section id="press">
+      <h2>Press Kit</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Descriptions</h3>
+          <p><strong>Short:</strong> Thread the needle—glide a neon arrow through rings and rack up combos.</p>
+          <p><strong>Long:</strong> Arrow is a minimalist, fast-paced runner. Choose tap, thumb-drag, or tilt controls, then fine-tune the drag multiplier for your perfect feel. Addictive runs, clean neon visuals, and a scoreboard that keeps you coming back.</p>
+          <p style="margin-top:10px;"><a class="btn" href="https://play.google.com/store/apps/details?id=com.arrow.arrow" target="_blank" rel="noopener">Play Now</a></p>
+        </div>
+        <div class="card">
+          <h3>Downloads</h3>
+          <ul>
+            <li><a href="Arrow_app_icon.png" download>App Icon (PNG)</a></li>
+            <li><a href="Arrow banner.png" download>Banner (PNG)</a></li>
+            <li><a href="arrow_pink.png" download>Arrow Artwork (PNG)</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section id="privacy">
+      <h2>Privacy</h2>
+      <div class="card">
+        <p><em>Last updated: October 25, 2025</em></p>
+        <p>Arrow is a free, ad-supported game. We don’t collect your name or email inside the app. Third-party services (e.g., Google AdMob) may use your device’s Advertising ID and basic diagnostics to deliver and measure ads. You can reset or limit ad tracking in your device settings.</p>
+        <p>Questions? Contact: <a href="mailto:ArrowAppIssues@gmail.com">ArrowAppIssues@gmail.com</a></p>
+        <p><strong>Download:</strong> <a href="https://play.google.com/store/apps/details?id=com.arrow.arrow" target="_blank" rel="noopener">https://play.google.com/store/apps/details?id=com.arrow.arrow</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="y"></span> Arrow. All rights reserved • <a href="#privacy">Privacy</a> • <a href="https://play.google.com/store/apps/details?id=com.arrow.arrow" target="_blank" rel="noopener">Get the Game</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
