@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arrow</title>
+  <meta name="description" content="Arrow is a fast, free Android game. Glide through neon rings, unlock skins, and chase high scores.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Ctext y='62%25' x='50%25' text-anchor='middle' font-size='180'%3E%E2%9E%9C%3C/text%3E%3C/svg%3E">
+  <meta property="og:title" content="Arrow – Neon Ring Runner">
+  <meta property="og:description" content="Free Android game with tap & tilt controls.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://placehold.co/1200x630/png?text=Arrow+Game+Cover">
+  <meta name="theme-color" content="#00E5FF">
+
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#0f1620; --ink:#e8f0ff; --muted:#9fb3c8;
+      --brand:#00e5ff; --brand2:#7b61ff; --ok:#64ffda; --warn:#ffc857;
+      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:linear-gradient(180deg,#0b0f14,#0b0f14 40%,#0c121a 100%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:20px}
+    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
+    .logo{width:40px;height:40px;border-radius:10px;background: radial-gradient(60% 60% at 50% 40%, #1ffeff, #006dff); box-shadow:0 0 18px rgba(0,229,255,.6) inset, 0 0 18px rgba(0,229,255,.25)}
+    .nav a.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#001018;font-weight:700}
+    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;padding:28px 0}
+    .card{background:linear-gradient(180deg,#0f1620,#0d141c);border:1px solid #192333;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .p24{padding:24px}
+    h1{font-size:clamp(28px,4vw,44px);margin:0 0 10px;line-height:1.05}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#0c1922;border:1px solid #123042;color:var(--ok);font-size:12px;font-weight:700;letter-spacing:.3px}
+    .lede{color:var(--muted);font-size:clamp(14px,2.5vw,18px)}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+    .badge{height:48px;border-radius:10px;overflow:hidden;border:1px solid #1b2735;background:#081018}
+    .mock{aspect-ratio:16/10;border-radius:var(--radius);border:1px solid #1b2735;background:
+      radial-gradient(80% 80% at 50% 50%, rgba(0,229,255,.12), rgba(0,0,0,0) 60%),
+      url('https://placehold.co/1200x750/png?text=Gameplay+Screenshot') center/cover no-repeat;}
+    .grid{display:grid;gap:16px}
+    .features{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:16px}
+    .feat{padding:18px;border-radius:14px;border:1px solid #1b2735;background:#0b121a}
+    h3{margin:.4rem 0}
+    .gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .shot{aspect-ratio:16/9;border-radius:12px;border:1px solid #1b2735;background:#0b1218 url('https://placehold.co/800x450/png?text=Screenshot') center/cover no-repeat}
+    .two{grid-template-columns:1fr 1fr}
+    .policy{white-space:pre-wrap;font-size:14px;line-height:1.5;color:#c9d7e6}
+    .faq dt{font-weight:800;margin-top:10px}
+    .faq dd{margin:0 0 10px;color:var(--muted)}
+    footer{margin:40px 0;color:#8ea3b7;font-size:13px}
+    .kpis{display:flex;gap:12px;flex-wrap:wrap}
+    .pill{padding:10px 12px;border-radius:999px;border:1px solid #1b2735;background:#0c1219}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.features,.gallery,.two{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand"><div class="logo" aria-hidden="true"></div> Arrow</div>
+      <div class="kpis">
+        <span class="pill">Free • Ad-supported</span>
+        <a class="btn" href="#download">Download</a>
